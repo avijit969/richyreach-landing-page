@@ -1,12 +1,50 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Sparkles, Briefcase, Users, Zap } from "lucide-react";
 
 export default function ShowcaseSection() {
   const [selectedScreen, setSelectedScreen] = useState(0);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-45% 0px -45% 0px", // triggers when card container is in middle of viewport
+      threshold: 0.1,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = cardRefs.current.indexOf(entry.target as HTMLDivElement);
+          if (index !== -1) {
+            setSelectedScreen(index);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    cardRefs.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const handleCardClick = (index: number) => {
+    setSelectedScreen(index);
+    cardRefs.current[index]?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  };
 
   const showcaseScreens = [
     {
@@ -55,38 +93,43 @@ export default function ShowcaseSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left Column: Interactive Selector Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-4 order-2 lg:order-1">
+          <div className="lg:col-span-5 flex flex-col gap-0 order-2 lg:order-1">
             {showcaseScreens.map((screen, index) => (
-              <button
+              <div
                 key={index}
-                onClick={() => setSelectedScreen(index)}
-                className={`p-6 rounded-3xl text-left border transition-all duration-300 cursor-pointer flex gap-5 items-start ${
-                  selectedScreen === index
-                    ? "bg-[#fbf8f5] border-rose/25 shadow-lg lg:translate-x-4"
-                    : "bg-transparent border-transparent hover:bg-[#fbf8f5]/50 hover:border-rose/10"
-                }`}
+                ref={(el) => { cardRefs.current[index] = el; }}
+                className="py-4 lg:py-16 w-full flex items-center justify-center"
               >
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-sm transition-colors duration-300 ${
-                  selectedScreen === index ? "bg-oxblood text-white" : "bg-white text-oxblood border border-rose/15"
-                }`}>
-                  {screen.icon}
-                </div>
-                <div className="flex-1">
-                  <h4 className="font-sans font-bold text-base text-oxblood mb-1">
-                    {screen.title}
-                  </h4>
-                  <p className="text-xs text-rose-deep font-light leading-relaxed">
-                    {screen.description}
-                  </p>
-                </div>
-              </button>
+                <button
+                  onClick={() => handleCardClick(index)}
+                  className={`w-full p-4 sm:p-6 rounded-3xl text-left border transition-all duration-300 cursor-pointer flex gap-4 sm:gap-5 items-start ${
+                    selectedScreen === index
+                      ? "bg-[#fbf8f5] border-rose/25 shadow-lg lg:translate-x-4"
+                      : "bg-transparent border-transparent hover:bg-[#fbf8f5]/50 hover:border-rose/10"
+                  }`}
+                >
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-sm transition-colors duration-300 ${
+                    selectedScreen === index ? "bg-oxblood text-white" : "bg-white text-oxblood border border-rose/15"
+                  }`}>
+                    {screen.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-sans font-bold text-base text-oxblood mb-1">
+                      {screen.title}
+                    </h4>
+                    <p className="text-xs text-rose-deep font-light leading-relaxed">
+                      {screen.description}
+                    </p>
+                  </div>
+                </button>
+              </div>
             ))}
           </div>
 
           {/* Right Column: Premium iPhone Frame Display */}
-          <div className="lg:col-span-7 flex justify-center items-center relative order-1 lg:order-2">
+          <div className="lg:col-span-7 lg:sticky lg:top-36 lg:h-[calc(100vh-200px)] flex justify-center items-center relative order-1 lg:order-2 lg:self-start py-8 lg:py-0">
             {/* Background Decorative Rings */}
             <div className="absolute w-96 h-96 rounded-full border border-dashed border-rose/15 animate-[spin_60s_linear_infinite] -z-10" />
             <div className="absolute w-80 h-80 rounded-full border border-dashed border-rose/10 animate-[spin_40s_linear_infinite_reverse] -z-10" />

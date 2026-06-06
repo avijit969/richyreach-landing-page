@@ -168,7 +168,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                       <CheckCircle size={24} />
                     </div>
                     <div>
-                      <h4 className="font-serif text-xl font-bold text-cream mb-1.5">You're on the list!</h4>
+                      <h4 className="font-serif text-xl font-bold text-cream mb-1.5">You&apos;re on the list!</h4>
                       <p className="text-xs text-cream-lite/80 font-light leading-relaxed max-w-xs mx-auto">
                         Reserved your early access pass as a <span className="font-bold text-cream capitalize">{waitlistRole}</span>. We will notify you at <span className="font-bold text-cream">{waitlistEmail}</span> as soon as your cohort launches!
                       </p>

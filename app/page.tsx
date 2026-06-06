@@ -7,11 +7,9 @@ import WaitlistSection from "@/components/WaitlistSection";
 import WaitlistModal from "@/components/WaitlistModal";
 import ShowcaseSection from "@/components/ShowcaseSection";
 import { 
-  Users, 
   TrendingUp, 
   Wallet, 
   ArrowRight, 
-  CheckCircle, 
   ChevronDown, 
   Sparkles, 
   Briefcase, 
@@ -137,7 +135,7 @@ export default function Home() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4 bg-white/95 rounded-2xl border border-rose/10 p-5 flex flex-col gap-4 shadow-xl"
+              className="md:hidden mt-4 bg-white/95 rounded-2xl border border-rose/10 p-5 flex flex-col gap-4 shadow-xl max-h-[calc(100vh-100px)] overflow-y-auto"
             >
               <a 
                 href="#features" 
@@ -193,12 +191,12 @@ export default function Home() {
       </nav>
 
       {/* == Hero Section == */}
-      <section className="relative min-h-screen pt-36 pb-20 px-6 md:px-12 flex items-center bg-gradient-to-br from-[#fbf8f5] via-[#f5eae0] to-[#fbf8f5]">
+      <section className="relative min-h-screen pt-32 sm:pt-36 pb-12 sm:pb-20 px-6 md:px-12 flex items-center bg-gradient-to-br from-[#fbf8f5] via-[#f5eae0] to-[#fbf8f5]">
         {/* Glow Shapes */}
         <div className="absolute top-1/4 left-1/10 w-96 h-96 bg-rose/10 rounded-full filter blur-3xl -z-10" />
         <div className="absolute bottom-1/4 right-1/10 w-80 h-80 bg-cream/20 rounded-full filter blur-3xl -z-10" />
 
-        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Left Text */}
           <motion.div 
             initial="hidden"
@@ -218,7 +216,7 @@ export default function Home() {
 
             <motion.h1 
               variants={itemVariants}
-              className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-oxblood leading-tight tracking-tight mb-6"
+              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-oxblood leading-tight tracking-tight mb-6"
             >
               Where Creators Get <span className="italic font-normal text-rose-deep block md:inline">Rich</span>,<br className="hidden md:block"/> and Brands Get <span className="font-sans font-extrabold text-oxblood-deep uppercase tracking-tighter">Reach</span>.
             </motion.h1>
@@ -233,18 +231,18 @@ export default function Home() {
             {/* CTAs */}
             <motion.div 
               variants={itemVariants}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10"
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10 w-full"
             >
               <button 
                 onClick={() => setIsWaitlistOpen(true)} 
-                className="w-full sm:w-auto px-8 py-4 bg-oxblood hover:bg-oxblood-deep text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group cursor-pointer border-none"
+                className="w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 bg-oxblood hover:bg-oxblood-deep text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group cursor-pointer border-none"
               >
                 Get Started
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
               <a 
                 href="#showcase" 
-                className="w-full sm:w-auto px-8 py-4 bg-white border border-rose-soft hover:bg-rose-soft/5 text-oxblood font-semibold rounded-full shadow-sm hover:shadow transition-all text-center"
+                className="w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 bg-white border border-rose-soft hover:bg-rose-soft/5 text-oxblood font-semibold rounded-full shadow-sm hover:shadow transition-all text-center"
               >
                 Learn More
               </a>
@@ -286,13 +284,13 @@ export default function Home() {
             initial={{ opacity: 0, x: 50, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ type: "spring", stiffness: 80, damping: 18, delay: 0.3 }}
-            className="lg:col-span-5 relative flex items-center justify-center"
+            className="lg:col-span-5 relative flex items-center justify-center w-full max-w-[340px] sm:max-w-none mx-auto lg:mx-0 mt-8 lg:mt-0"
           >
             {/* Soft backdrop glow */}
-            <div className="absolute w-72 h-72 rounded-full bg-oxblood/5 border border-rose/10 -z-10 animate-pulse" />
+            <div className="absolute w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-oxblood/5 border border-rose/10 -z-10 animate-pulse" />
 
             {/* Premium Phone Container */}
-            <div className="relative w-[300px] h-[610px] bg-oxblood-deep rounded-[48px] p-3 shadow-2xl border-4 border-oxblood">
+            <div className="relative w-[270px] h-[550px] sm:w-[300px] sm:h-[610px] bg-oxblood-deep rounded-[40px] sm:rounded-[48px] p-2.5 sm:p-3 shadow-2xl border-4 border-oxblood shrink-0">
               {/* Notch */}
               <div className="absolute top-3 left-1/2 -translate-x-1/2 w-32 h-6 bg-oxblood-deep rounded-b-2xl z-30 flex justify-center items-center">
                 <div className="w-3 h-3 rounded-full bg-black/60 mr-2" />
@@ -300,7 +298,7 @@ export default function Home() {
               </div>
 
               {/* Screen Content */}
-              <div className="w-full h-full rounded-[38px] overflow-hidden bg-[#f4ece4] relative">
+              <div className="w-full h-full rounded-[32px] sm:rounded-[38px] overflow-hidden bg-[#f4ece4] relative">
                 <Image 
                   src="/app-ui/home-page.png" 
                   alt="RichyReach Home Screen" 
@@ -315,7 +313,7 @@ export default function Home() {
             <motion.div 
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-              className="absolute -left-12 top-1/4 bg-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-rose/10 z-20"
+              className="absolute -left-2 sm:-left-12 top-1/4 bg-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-rose/10 z-20 scale-90 sm:scale-100 origin-right sm:origin-center"
             >
               <div className="w-9 h-9 rounded-xl bg-oxblood/10 flex items-center justify-center text-oxblood">
                 <Wallet size={18} />
@@ -329,7 +327,7 @@ export default function Home() {
             <motion.div 
               animate={{ y: [0, 10, 0] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -right-8 bottom-1/4 bg-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-rose/10 z-20"
+              className="absolute -right-2 sm:-right-8 bottom-1/4 bg-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-rose/10 z-20 scale-90 sm:scale-100 origin-left sm:origin-center"
             >
               <div className="w-9 h-9 rounded-xl bg-green/10 flex items-center justify-center text-green">
                 <TrendingUp size={18} />
@@ -361,7 +359,7 @@ export default function Home() {
             <div className="bg-[#f4ece4] p-1.5 rounded-full flex items-center">
               <button 
                 onClick={() => setActiveTab("creator")}
-                className={`flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm transition-all ${
+                className={`flex items-center gap-1.5 sm:gap-2 px-4 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-xs sm:text-sm transition-all ${
                   activeTab === "creator" 
                     ? "bg-oxblood text-white shadow-md" 
                     : "text-oxblood hover:text-oxblood-deep"
@@ -372,7 +370,7 @@ export default function Home() {
               </button>
               <button 
                 onClick={() => setActiveTab("brand")}
-                className={`flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-sm transition-all ${
+                className={`flex items-center gap-1.5 sm:gap-2 px-4 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold text-xs sm:text-sm transition-all ${
                   activeTab === "brand" 
                     ? "bg-oxblood text-white shadow-md" 
                     : "text-oxblood hover:text-oxblood-deep"
@@ -393,7 +391,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
               >
                 {/* Mock Card Representation (Ananya Sharma profile card) */}
                 <div className="lg:col-span-5 flex items-center justify-center">
@@ -416,18 +414,18 @@ export default function Home() {
                     </div>
 
                     {/* Stats */}
-                    <div className="grid grid-cols-3 gap-2 border-b border-rose/10 pb-4 mb-4 text-center">
-                      <div>
+                    <div className="flex items-center justify-between border-b border-rose/10 pb-4 mb-4 text-center">
+                      <div className="flex-1">
                         <span className="block font-sans font-bold text-base text-oxblood">120K</span>
                         <span className="block text-[10px] text-rose uppercase tracking-wider font-semibold">Followers</span>
                       </div>
-                      <div className="w-[1px] bg-rose/10 h-8 self-center mx-auto" />
-                      <div>
+                      <div className="w-[1px] bg-rose/10 h-8 shrink-0" />
+                      <div className="flex-1">
                         <span className="block font-sans font-bold text-base text-oxblood">8.9%</span>
                         <span className="block text-[10px] text-rose uppercase tracking-wider font-semibold">Engagement</span>
                       </div>
-                      <div className="w-[1px] bg-rose/10 h-8 self-center mx-auto" />
-                      <div>
+                      <div className="w-[1px] bg-rose/10 h-8 shrink-0" />
+                      <div className="flex-1">
                         <span className="block font-sans font-bold text-base text-oxblood">₹ 1.2L+</span>
                         <span className="block text-[10px] text-rose uppercase tracking-wider font-semibold">Earnings</span>
                       </div>
@@ -501,7 +499,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
               >
                 {/* Brand features */}
                 <div className="lg:col-span-7 flex flex-col justify-center gap-8 order-2 lg:order-1">
@@ -605,7 +603,7 @@ export default function Home() {
               Three Simple Steps to Scale
             </h2>
             <p className="text-base text-rose-deep font-light">
-              We've stripped away the complexity. No endless negotiations or paper contracts. Just results.
+              We&apos;ve stripped away the complexity. No endless negotiations or paper contracts. Just results.
             </p>
           </div>
 
@@ -639,7 +637,7 @@ export default function Home() {
               </div>
               <h3 className="font-serif text-xl font-bold text-oxblood mb-3">Instant Settlement</h3>
               <p className="text-sm text-rose-deep leading-relaxed font-light max-w-xs">
-                Once deliverables are completed and approved by the brand, locked campaign funds release directly to the creator's bank.
+                Once deliverables are completed and approved by the brand, locked campaign funds release directly to the creator&apos;s bank.
               </p>
             </div>
 
@@ -652,21 +650,21 @@ export default function Home() {
       {/* == Stats Section == */}
       <section id="stats" className="py-20 px-6 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="p-8 bg-[#fbf8f5] rounded-3xl text-center border border-rose/10 shadow-sm hover:shadow transition-shadow">
-              <span className="block font-serif text-4xl md:text-5xl font-bold text-oxblood mb-2">2.5M+</span>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            <div className="p-4 sm:p-6 md:p-8 bg-[#fbf8f5] rounded-3xl text-center border border-rose/10 shadow-sm hover:shadow transition-shadow">
+              <span className="block font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-oxblood mb-2">2.5M+</span>
               <span className="block text-xs md:text-sm text-rose uppercase tracking-wider font-semibold">Active Creators</span>
             </div>
-            <div className="p-8 bg-[#fbf8f5] rounded-3xl text-center border border-rose/10 shadow-sm hover:shadow transition-shadow">
-              <span className="block font-serif text-4xl md:text-5xl font-bold text-oxblood mb-2">₹2.4Cr+</span>
+            <div className="p-4 sm:p-6 md:p-8 bg-[#fbf8f5] rounded-3xl text-center border border-rose/10 shadow-sm hover:shadow transition-shadow">
+              <span className="block font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-oxblood mb-2">₹2.4Cr+</span>
               <span className="block text-xs md:text-sm text-rose uppercase tracking-wider font-semibold">Earnings Paid</span>
             </div>
-            <div className="p-8 bg-[#fbf8f5] rounded-3xl text-center border border-rose/10 shadow-sm hover:shadow transition-shadow">
-              <span className="block font-serif text-4xl md:text-5xl font-bold text-oxblood mb-2">4.8x</span>
+            <div className="p-4 sm:p-6 md:p-8 bg-[#fbf8f5] rounded-3xl text-center border border-rose/10 shadow-sm hover:shadow transition-shadow">
+              <span className="block font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-oxblood mb-2">4.8x</span>
               <span className="block text-xs md:text-sm text-rose uppercase tracking-wider font-semibold">Avg. Engagement</span>
             </div>
-            <div className="p-8 bg-[#fbf8f5] rounded-3xl text-center border border-rose/10 shadow-sm hover:shadow transition-shadow">
-              <span className="block font-serif text-4xl md:text-5xl font-bold text-oxblood mb-2">10K+</span>
+            <div className="p-4 sm:p-6 md:p-8 bg-[#fbf8f5] rounded-3xl text-center border border-rose/10 shadow-sm hover:shadow transition-shadow">
+              <span className="block font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-oxblood mb-2">10K+</span>
               <span className="block text-xs md:text-sm text-rose uppercase tracking-wider font-semibold">Brand Campaigns</span>
             </div>
           </div>
@@ -730,14 +728,14 @@ export default function Home() {
       {/* == Call to Action Section == */}
       <section id="download" className="py-24 px-6 md:px-12 bg-white relative">
         <div className="max-w-7xl mx-auto">
-          <div className="relative w-full rounded-[40px] overflow-hidden bg-gradient-to-br from-oxblood to-oxblood-deep p-8 md:p-16 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="relative w-full rounded-[40px] overflow-hidden bg-gradient-to-br from-oxblood to-oxblood-deep p-6 sm:p-10 md:p-16 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-12">
             
             {/* Absolute Glowing Blobs */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-rose/15 rounded-full filter blur-3xl -z-0" />
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-rose-deep/10 rounded-full filter blur-3xl -z-0" />
 
             <div className="flex-1 relative z-10 text-center lg:text-left">
-              <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream mb-6">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-cream mb-6">
                 Ready to Join the Revolution?
               </h2>
               <p className="text-base text-cream-lite/85 font-light leading-relaxed max-w-xl mb-10">
@@ -747,14 +745,14 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <button 
                   onClick={() => setIsWaitlistOpen(true)}
-                  className="w-full sm:w-auto px-8 py-4 bg-white hover:bg-cream-lite text-oxblood font-bold rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2.5 cursor-pointer border-none"
+                  className="w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 bg-white hover:bg-cream-lite text-oxblood font-bold rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2.5 cursor-pointer border-none"
                 >
                   <Download size={18} />
                   Download iOS App
                 </button>
                 <button 
                   onClick={() => setIsWaitlistOpen(true)}
-                  className="w-full sm:w-auto px-8 py-4 border border-cream hover:bg-white/5 text-cream font-bold rounded-full shadow transition-all flex items-center justify-center gap-2.5 cursor-pointer bg-transparent"
+                  className="w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 border border-cream hover:bg-white/5 text-cream font-bold rounded-full shadow transition-all flex items-center justify-center gap-2.5 cursor-pointer bg-transparent"
                 >
                   <Download size={18} />
                   Download Android APK
@@ -762,9 +760,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="w-64 h-64 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 flex flex-col items-center justify-center shadow-lg relative z-10 shrink-0">
+            <div className="w-60 h-60 sm:w-64 sm:h-64 bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 flex flex-col items-center justify-center shadow-lg relative z-10 shrink-0">
               {/* Mock QR Code */}
-              <div className="w-40 h-40 bg-white rounded-xl p-2 mb-4">
+              <div className="w-36 h-36 sm:w-40 sm:h-40 bg-white rounded-xl p-2 mb-4">
                 <div className="w-full h-full relative">
                   {/* Decorative grid pattern mimicking QR */}
                   <div className="absolute inset-0 grid grid-cols-5 gap-1.5 opacity-90">
