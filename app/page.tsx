@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import WaitlistSection from "@/components/WaitlistSection";
 import WaitlistModal from "@/components/WaitlistModal";
@@ -54,6 +54,31 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const checkUrlForWaitlist = () => {
+        const params = new URLSearchParams(window.location.search);
+        if (
+          params.get("waitlist") === "open" || 
+          params.get("join") === "true" ||
+          window.location.hash === "#join" ||
+          window.location.hash === "#waitlist"
+        ) {
+          setIsWaitlistOpen(true);
+        }
+      };
+
+      // Check on mount
+      checkUrlForWaitlist();
+
+      // Listen for hashchange events
+      window.addEventListener("hashchange", checkUrlForWaitlist);
+      return () => {
+        window.removeEventListener("hashchange", checkUrlForWaitlist);
+      };
+    }
+  }, []);
 
   const faqs: FAQItem[] = [
     {
