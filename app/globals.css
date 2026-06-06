@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-sans);
+  --font-sans: var(--font-sans);
+
+  --color-oxblood: #3f030b;
+  --color-oxblood-deep: #2a0207;
+  --color-rose: #b46a74;
+  --color-rose-deep: #8d4750;
+  --color-rose-soft: #d8a7ad;
+  --color-cream: #e8d8cc;
+  --color-cream-lite: #f4ece4;
+  --color-cream-dark: #dcc7b8;
+  --color-ink: #2a0207;
+  --color-green: #2a7a5a;
+}
+
+body {
+  font-family: var(--font-sans), sans-serif;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: var(--font-sans), sans-serif;
+}
