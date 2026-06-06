@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Briefcase, CheckCircle, Sparkles, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface WaitlistModalProps {
   isOpen: boolean;
@@ -15,11 +15,55 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   const [waitlistRole, setWaitlistRole] = useState<"creator" | "brand">("creator");
   const [waitlistSubmitted, setWaitlistSubmitted] = useState(false);
   const [waitlistName, setWaitlistName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
 
-  const handleJoinWaitlist = (e: React.FormEvent) => {
+  // Fetch count on modal open
+  useEffect(() => {
+    if (isOpen) {
+      fetch("https://richyreach-backend.magicwebs-in.workers.dev/api/waitlist/count")
+        .then((res) => res.json())
+        .then((json) => {
+          if (json.success && typeof json.data?.count === "number") {
+            setWaitlistCount(json.data.count);
+          }
+        })
+        .catch((err) => console.error("Failed to fetch waitlist count:", err));
+    }
+  }, [isOpen]);
+
+  const handleJoinWaitlist = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (waitlistEmail.trim() && waitlistName.trim()) {
+    if (!waitlistEmail.trim() || !waitlistName.trim()) return;
+
+    setIsLoading(true);
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("https://richyreach-backend.magicwebs-in.workers.dev/api/waitlist/join", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: waitlistName.trim(),
+          email: waitlistEmail.toLowerCase().trim(),
+          role: waitlistRole,
+        }),
+      });
+
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || "Failed to join waitlist. Please try again.");
+      }
+
       setWaitlistSubmitted(true);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "An unexpected error occurred.";
+      setErrorMessage(message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -28,6 +72,8 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
     setWaitlistName("");
     setWaitlistRole("creator");
     setWaitlistSubmitted(false);
+    setErrorMessage("");
+    setIsLoading(false);
   };
 
   const handleClose = () => {
@@ -99,10 +145,11 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                       <input
                         type="text"
                         required
+                        disabled={isLoading}
                         placeholder="Enter your name"
                         value={waitlistName}
                         onChange={(e) => setWaitlistName(e.target.value)}
-                        className="w-full bg-[#fbf8f5] border border-rose/15 rounded-xl px-4 py-3 text-sm font-medium text-oxblood focus:outline-none focus:border-oxblood shadow-sm transition-colors"
+                        className="w-full bg-[#fbf8f5] border border-rose/15 rounded-xl px-4 py-3 text-sm font-medium text-oxblood focus:outline-none focus:border-oxblood shadow-sm transition-colors disabled:opacity-60"
                       />
                     </div>
 
@@ -112,10 +159,11 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                       <input
                         type="email"
                         required
+                        disabled={isLoading}
                         placeholder="Enter your email"
                         value={waitlistEmail}
                         onChange={(e) => setWaitlistEmail(e.target.value)}
-                        className="w-full bg-[#fbf8f5] border border-rose/15 rounded-xl px-4 py-3 text-sm font-medium text-oxblood focus:outline-none focus:border-oxblood shadow-sm transition-colors"
+                        className="w-full bg-[#fbf8f5] border border-rose/15 rounded-xl px-4 py-3 text-sm font-medium text-oxblood focus:outline-none focus:border-oxblood shadow-sm transition-colors disabled:opacity-60"
                       />
                     </div>
 
@@ -125,8 +173,9 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                       <div className="grid grid-cols-2 gap-2">
                         <button
                           type="button"
+                          disabled={isLoading}
                           onClick={() => setWaitlistRole("creator")}
-                          className={`py-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${waitlistRole === "creator"
+                          className={`py-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer disabled:opacity-60 ${waitlistRole === "creator"
                               ? "bg-oxblood text-white border-oxblood shadow-sm"
                               : "bg-[#fbf8f5] text-rose-deep border-rose/15 hover:bg-rose/5"
                             }`}
@@ -136,8 +185,9 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                         </button>
                         <button
                           type="button"
+                          disabled={isLoading}
                           onClick={() => setWaitlistRole("brand")}
-                          className={`py-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${waitlistRole === "brand"
+                          className={`py-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer disabled:opacity-60 ${waitlistRole === "brand"
                               ? "bg-oxblood text-white border-oxblood shadow-sm"
                               : "bg-[#fbf8f5] text-rose-deep border-rose/15 hover:bg-rose/5"
                             }`}
@@ -148,13 +198,21 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                       </div>
                     </div>
 
+                    {/* Error Message */}
+                    {errorMessage && (
+                      <div className="text-xs font-semibold text-rose-deep bg-oxblood/5 border border-rose/10 p-3 rounded-xl text-center">
+                        {errorMessage}
+                      </div>
+                    )}
+
                     {/* Submit button */}
                     <button
                       type="submit"
-                      className="w-full py-3.5 bg-oxblood hover:bg-oxblood-deep text-white font-bold rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all text-sm flex items-center justify-center gap-2 cursor-pointer mt-2"
+                      disabled={isLoading}
+                      className="w-full py-3.5 bg-oxblood hover:bg-oxblood-deep text-white font-bold rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all text-sm flex items-center justify-center gap-2 cursor-pointer mt-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                     >
-                      Join the Waitlist
-                      <ArrowRight size={16} />
+                      {isLoading ? "Joining..." : "Join the Waitlist"}
+                      {!isLoading && <ArrowRight size={16} />}
                     </button>
                   </motion.form>
                 ) : (
@@ -186,7 +244,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
               {/* Social Proof Progress Info */}
               <div className="mt-6 pt-4 border-t border-rose/5 flex flex-col items-center gap-2 text-center">
                 <span className="text-[10px] text-rose-deep font-semibold">
-                  Currently in waitlist queue: <span className="text-oxblood font-bold">14,832 creators & brands</span>
+                  Currently in waitlist queue: <span className="text-oxblood font-bold">{waitlistCount !== null ? waitlistCount.toLocaleString() : "14,832"} creators & brands</span>
                 </span>
                 <div className="w-48 h-1.5 bg-cream-dark rounded-full overflow-hidden">
                   <div className="h-full bg-oxblood rounded-full animate-pulse animate-duration-2000" style={{ width: "89%" }} />

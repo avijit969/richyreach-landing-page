@@ -1,11 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Sparkles, ArrowRight } from "lucide-react";
 import WaitlistModal from "./WaitlistModal";
 
 export default function WaitlistSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch("https://richyreach-backend.magicwebs-in.workers.dev/api/waitlist/count")
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.success && typeof json.data?.count === "number") {
+          setWaitlistCount(json.data.count);
+        }
+      })
+      .catch((err) => console.error("Failed to fetch waitlist count:", err));
+  }, []);
 
   return (
     <section id="waitlist" className="py-24 px-6 md:px-12 bg-white relative overflow-hidden w-full border-t border-rose/5">
@@ -36,7 +48,7 @@ export default function WaitlistSection() {
         {/* Social Proof Progress Info */}
         <div className="mt-12 flex flex-col items-center gap-4">
           <span className="text-xs text-rose-deep font-semibold">
-            Currently in waitlist queue: <span className="text-oxblood font-bold">14,832 creators & brands</span>
+            Currently in waitlist queue: <span className="text-oxblood font-bold">{waitlistCount !== null ? waitlistCount.toLocaleString() : "14,832"} creators & brands</span>
           </span>
           <div className="w-64 h-2 bg-cream-dark rounded-full overflow-hidden">
             <div className="h-full bg-oxblood rounded-full animate-pulse animate-duration-2000" style={{ width: "89%" }} />
