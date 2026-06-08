@@ -22,7 +22,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   // Fetch count on modal open
   useEffect(() => {
     if (isOpen) {
-      fetch("https://richyreach-backend.magicwebs-in.workers.dev/api/waitlist/count")
+      fetch("https://backend-api.richyreach.com/api/waitlist/count")
         .then((res) => res.json())
         .then((json) => {
           if (json.success && typeof json.data?.count === "number") {
@@ -41,7 +41,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
     setErrorMessage("");
 
     try {
-      const res = await fetch("https://richyreach-backend.magicwebs-in.workers.dev/api/waitlist/join", {
+      const res = await fetch("https://backend-api.richyreach.com/api/waitlist/join", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -176,8 +176,8 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                           disabled={isLoading}
                           onClick={() => setWaitlistRole("creator")}
                           className={`py-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer disabled:opacity-60 ${waitlistRole === "creator"
-                              ? "bg-oxblood text-white border-oxblood shadow-sm"
-                              : "bg-[#fbf8f5] text-rose-deep border-rose/15 hover:bg-rose/5"
+                            ? "bg-oxblood text-white border-oxblood shadow-sm"
+                            : "bg-[#fbf8f5] text-rose-deep border-rose/15 hover:bg-rose/5"
                             }`}
                         >
                           <Sparkles size={14} />
@@ -188,8 +188,8 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                           disabled={isLoading}
                           onClick={() => setWaitlistRole("brand")}
                           className={`py-3 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer disabled:opacity-60 ${waitlistRole === "brand"
-                              ? "bg-oxblood text-white border-oxblood shadow-sm"
-                              : "bg-[#fbf8f5] text-rose-deep border-rose/15 hover:bg-rose/5"
+                            ? "bg-oxblood text-white border-oxblood shadow-sm"
+                            : "bg-[#fbf8f5] text-rose-deep border-rose/15 hover:bg-rose/5"
                             }`}
                         >
                           <Briefcase size={14} />
@@ -244,7 +244,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
               {/* Social Proof Progress Info */}
               <div className="mt-6 pt-4 border-t border-rose/5 flex flex-col items-center gap-2 text-center">
                 <span className="text-[10px] text-rose-deep font-semibold">
-                  Currently in waitlist queue: <span className="text-oxblood font-bold">{waitlistCount !== null ? waitlistCount.toLocaleString() : "14,832"} creators & brands</span>
+                  Currently in waitlist queue: <span className="text-oxblood font-bold">{waitlistCount !== null ? (1900 + (waitlistCount)).toLocaleString() : "......"} creators & brands</span>
                 </span>
                 <div className="w-48 h-1.5 bg-cream-dark rounded-full overflow-hidden">
                   <div className="h-full bg-oxblood rounded-full animate-pulse animate-duration-2000" style={{ width: "89%" }} />
