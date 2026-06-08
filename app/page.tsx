@@ -860,7 +860,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream-lite/50 font-light">
           <div>
             <span>&copy; {new Date().getFullYear()} RichyReach Platform. All rights reserved.</span>
-            <span className="block sm:inline sm:ml-4 text-cream-lite/40 font-medium">Powered by MagicWebs Technologies Pvt Ltd.</span>
+            <span className="block sm:inline sm:ml-4 text-cream-lite/40 font-medium">RichyReach is a brand of MagicWebs Technologies Pvt Ltd.</span>
           </div>
           <span className="flex gap-4">
             <a href="#" className="hover:text-white transition-colors">Twitter</a>

@@ -9,7 +9,7 @@ export default function WaitlistSection() {
   const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch("https://richyreach-backend.magicwebs-in.workers.dev/api/waitlist/count")
+    fetch("https://backend-api.richyreach.com/api/waitlist/count")
       .then((res) => res.json())
       .then((json) => {
         if (json.success && typeof json.data?.count === "number") {
@@ -48,7 +48,7 @@ export default function WaitlistSection() {
         {/* Social Proof Progress Info */}
         <div className="mt-12 flex flex-col items-center gap-4">
           <span className="text-xs text-rose-deep font-semibold">
-            Currently in waitlist queue: <span className="text-oxblood font-bold">{waitlistCount !== null ? waitlistCount.toLocaleString() : "14,832"} creators & brands</span>
+            Currently in waitlist queue: <span className="text-oxblood font-bold">{waitlistCount !== null ? (1900 + (waitlistCount)).toLocaleString() : "......"} creators & brands</span>
           </span>
           <div className="w-64 h-2 bg-cream-dark rounded-full overflow-hidden">
             <div className="h-full bg-oxblood rounded-full animate-pulse animate-duration-2000" style={{ width: "89%" }} />

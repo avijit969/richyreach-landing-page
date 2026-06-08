@@ -27,6 +27,9 @@ export default function RefundPage() {
           <p className="text-xs text-rose mb-8">Last Updated: June 6, 2026</p>
 
           <div className="space-y-6 text-sm leading-relaxed text-rose-deep font-light">
+            <p className="font-medium text-oxblood">
+              RichyReach is a brand owned and operated by MagicWebs Technologies Pvt Ltd.
+            </p>
             <section>
               <h2 className="font-sans font-bold text-base text-oxblood mb-2">1. Escrow Funding and Campaign Cancellations</h2>
               <p>
@@ -70,7 +73,7 @@ export default function RefundPage() {
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light">
           <div>
             <span>&copy; {new Date().getFullYear()} RichyReach Platform. All rights reserved.</span>
-            <span className="block sm:inline sm:ml-4 text-cream-lite/40 font-medium">Powered by MagicWebs Technologies Pvt Ltd.</span>
+            <span className="block sm:inline sm:ml-4 text-cream-lite/40 font-medium">RichyReach is a brand of MagicWebs Technologies Pvt Ltd.</span>
           </div>
           <div className="flex gap-4">
             <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>

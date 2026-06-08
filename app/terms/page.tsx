@@ -30,7 +30,7 @@ export default function TermsPage() {
             <section>
               <h2 className="font-sans font-bold text-base text-oxblood mb-2">1. Agreement to Terms</h2>
               <p>
-                Welcome to RichyReach. By accessing or using our mobile application and landing page website, you agree to comply with and be bound by these Terms of Service. If you do not agree, please do not use the services.
+                Welcome to RichyReach, a brand owned and operated by MagicWebs Technologies Pvt Ltd. By accessing or using our mobile application and landing page website, you agree to comply with and be bound by these Terms of Service. If you do not agree, please do not use the services.
               </p>
             </section>
 
@@ -80,7 +80,7 @@ export default function TermsPage() {
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light">
           <div>
             <span>&copy; {new Date().getFullYear()} RichyReach Platform. All rights reserved.</span>
-            <span className="block sm:inline sm:ml-4 text-cream-lite/40 font-medium">Powered by MagicWebs Technologies Pvt Ltd.</span>
+            <span className="block sm:inline sm:ml-4 text-cream-lite/40 font-medium">RichyReach is a brand of MagicWebs Technologies Pvt Ltd.</span>
           </div>
           <div className="flex gap-4">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
