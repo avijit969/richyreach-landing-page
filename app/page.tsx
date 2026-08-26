@@ -6,6 +6,7 @@ import Image from "next/image";
 import WaitlistSection from "@/components/WaitlistSection";
 import WaitlistModal from "@/components/WaitlistModal";
 import ShowcaseSection from "@/components/ShowcaseSection";
+import IPhoneFrame from "@/components/IPhoneFrame";
 import { 
   TrendingUp, 
   Wallet, 
@@ -241,9 +242,9 @@ export default function Home() {
 
             <motion.h1 
               variants={itemVariants}
-              className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-oxblood leading-tight tracking-tight mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-oxblood leading-[1.15] tracking-tight mb-6"
             >
-              Where Creators Get <span className="italic font-normal text-rose-deep block md:inline">Rich</span>,<br className="hidden md:block"/> and Brands Get <span className="font-sans font-extrabold text-oxblood-deep uppercase tracking-tighter">Reach</span>.
+              Where Creators Get <span className="text-rose-deep">Rich</span>, and Brands Get <span className="text-oxblood-deep">Reach</span>.
             </motion.h1>
 
             <motion.p 
@@ -279,17 +280,30 @@ export default function Home() {
               className="flex items-center justify-center lg:justify-start gap-4"
             >
               <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-cream-dark">
-                    <Image 
-                      src={i === 1 ? "/ananya-profile.png" : "/onboarding-actor.png"} 
-                      alt="User avatar" 
-                      width={40} 
-                      height={40} 
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
-                ))}
+                <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-cream-dark shadow-sm">
+                  <Image 
+                    src="/ananya-profile.png" 
+                    alt="Ananya Sharma" 
+                    width={40} 
+                    height={40} 
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-[#3f030b] text-white flex items-center justify-center text-xs font-bold shadow-sm">
+                  RM
+                </div>
+                <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-cream-dark shadow-sm">
+                  <Image 
+                    src="/onboarding-actor.png" 
+                    alt="Devika Sengupta" 
+                    width={40} 
+                    height={40} 
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-[#8d4750] text-white flex items-center justify-center text-xs font-bold shadow-sm">
+                  PR
+                </div>
               </div>
               <div className="text-left">
                 <div className="flex items-center gap-1">
@@ -298,7 +312,7 @@ export default function Home() {
                   ))}
                 </div>
                 <span className="text-xs text-rose-deep font-semibold">
-                  Trusted by 25,000+ Active Users
+                  Trusted by 2,400+ Verified Creators & Brands
                 </span>
               </div>
             </motion.div>
@@ -314,54 +328,16 @@ export default function Home() {
             {/* Soft backdrop glow */}
             <div className="absolute w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-oxblood/5 border border-rose/10 -z-10 animate-pulse" />
 
-            {/* Premium Phone Container */}
-            <div className="relative w-[270px] h-[550px] sm:w-[300px] sm:h-[610px] bg-oxblood-deep rounded-[40px] sm:rounded-[48px] p-2.5 sm:p-3 shadow-2xl border-4 border-oxblood shrink-0">
-              {/* Notch */}
-              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-32 h-6 bg-oxblood-deep rounded-b-2xl z-30 flex justify-center items-center">
-                <div className="w-3 h-3 rounded-full bg-black/60 mr-2" />
-                <div className="w-10 h-1 bg-black/40 rounded-full" />
-              </div>
-
-              {/* Screen Content */}
-              <div className="w-full h-full rounded-[32px] sm:rounded-[38px] overflow-hidden bg-[#f4ece4] relative">
-                <Image 
-                  src="/app-ui/home-page.png" 
-                  alt="RichyReach Home Screen" 
-                  fill 
-                  className="object-cover"
-                  priority 
-                />
-              </div>
-            </div>
-
-            {/* Floating Badges */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-              className="absolute -left-2 sm:-left-12 top-1/4 bg-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-rose/10 z-20 scale-90 sm:scale-100 origin-right sm:origin-center"
-            >
-              <div className="w-9 h-9 rounded-xl bg-oxblood/10 flex items-center justify-center text-oxblood">
-                <Wallet size={18} />
-              </div>
-              <div>
-                <span className="block text-[10px] text-rose uppercase tracking-wider font-semibold">Total Paid</span>
-                <span className="block text-sm font-bold text-oxblood">₹2.4Cr+ Earnings</span>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -right-2 sm:-right-8 bottom-1/4 bg-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-rose/10 z-20 scale-90 sm:scale-100 origin-left sm:origin-center"
-            >
-              <div className="w-9 h-9 rounded-xl bg-green/10 flex items-center justify-center text-green">
-                <TrendingUp size={18} />
-              </div>
-              <div>
-                <span className="block text-[10px] text-rose uppercase tracking-wider font-semibold">Average Rate</span>
-                <span className="block text-sm font-bold text-green">4.8x Engagement</span>
-              </div>
-            </motion.div>
+            {/* Premium iPhone Frame */}
+            <IPhoneFrame>
+              <Image 
+                src="/app-ui/home-page.png" 
+                alt="RichyReach Home Screen" 
+                fill 
+                className="object-cover"
+                priority 
+              />
+            </IPhoneFrame>
           </motion.div>
         </div>
       </section>
@@ -677,20 +653,20 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             <div className="p-4 sm:p-6 md:p-8 bg-[#fbf8f5] rounded-3xl text-center border border-rose/10 shadow-sm hover:shadow transition-shadow">
-              <span className="block font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-oxblood mb-2">2.5M+</span>
-              <span className="block text-xs md:text-sm text-rose uppercase tracking-wider font-semibold">Active Creators</span>
+              <span className="block font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-oxblood mb-2">₹1.8Cr+</span>
+              <span className="block text-xs md:text-sm text-rose uppercase tracking-wider font-semibold">Escrow Payouts Settled</span>
             </div>
             <div className="p-4 sm:p-6 md:p-8 bg-[#fbf8f5] rounded-3xl text-center border border-rose/10 shadow-sm hover:shadow transition-shadow">
-              <span className="block font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-oxblood mb-2">₹2.4Cr+</span>
-              <span className="block text-xs md:text-sm text-rose uppercase tracking-wider font-semibold">Earnings Paid</span>
+              <span className="block font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-oxblood mb-2">2,400+</span>
+              <span className="block text-xs md:text-sm text-rose uppercase tracking-wider font-semibold">Verified Creators</span>
             </div>
             <div className="p-4 sm:p-6 md:p-8 bg-[#fbf8f5] rounded-3xl text-center border border-rose/10 shadow-sm hover:shadow transition-shadow">
               <span className="block font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-oxblood mb-2">4.8x</span>
-              <span className="block text-xs md:text-sm text-rose uppercase tracking-wider font-semibold">Avg. Engagement</span>
+              <span className="block text-xs md:text-sm text-rose uppercase tracking-wider font-semibold">Average Campaign ROI</span>
             </div>
             <div className="p-4 sm:p-6 md:p-8 bg-[#fbf8f5] rounded-3xl text-center border border-rose/10 shadow-sm hover:shadow transition-shadow">
-              <span className="block font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-oxblood mb-2">10K+</span>
-              <span className="block text-xs md:text-sm text-rose uppercase tracking-wider font-semibold">Brand Campaigns</span>
+              <span className="block font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-oxblood mb-2">350+</span>
+              <span className="block text-xs md:text-sm text-rose uppercase tracking-wider font-semibold">Campaigns Completed</span>
             </div>
           </div>
         </div>

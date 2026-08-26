@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: var(--font-sans);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-sans), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-sans), system-ui, -apple-system, sans-serif;
 
   --color-oxblood: #3f030b;
   --color-oxblood-deep: #2a0207;
@@ -23,4 +23,50 @@ body {
 
 h1, h2, h3, .font-serif {
   font-family: var(--font-sans), sans-serif;
+}
+
+/* Lenis Smooth Scroll Styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Modern Background Grid Patterns */
+.bg-grid-pattern {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(63, 3, 11, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(63, 3, 11, 0.05) 1px, transparent 1px);
+}
+
+.bg-grid-glow {
+  background-size: 64px 64px;
+  background-image: 
+    linear-gradient(to right, rgba(180, 106, 116, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(180, 106, 116, 0.07) 1px, transparent 1px);
+}
+
+.bg-grid-mask {
+  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 95%);
+}
+
+.bg-dot-pattern {
+  background-size: 32px 32px;
+  background-image: radial-gradient(circle, rgba(63, 3, 11, 0.08) 1.5px, transparent 1.5px);
 }

@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
 import { Sparkles, Briefcase, Users, Zap } from "lucide-react";
+import IPhoneFrame from "@/components/IPhoneFrame";
 
 export default function ShowcaseSection() {
   const [selectedScreen, setSelectedScreen] = useState(0);
@@ -129,35 +130,26 @@ export default function ShowcaseSection() {
               <div className="absolute w-80 h-80 rounded-full border border-dashed border-rose/10 animate-[spin_40s_linear_infinite_reverse] -z-10" />
 
               {/* iPhone Mockup Frame */}
-              <div className="relative w-[280px] sm:w-[300px] h-[570px] sm:h-[610px] bg-oxblood-deep rounded-[48px] p-3 shadow-2xl border-4 border-oxblood">
-                {/* Notch */}
-                <div className="absolute top-3 left-1/2 -translate-x-1/2 w-32 h-6 bg-oxblood-deep rounded-b-2xl z-30 flex justify-center items-center">
-                  <div className="w-3 h-3 rounded-full bg-black/60 mr-2" />
-                  <div className="w-10 h-1 bg-black/40 rounded-full" />
-                </div>
-
-                {/* Screen Content */}
-                <div className="w-full h-full rounded-[38px] overflow-hidden bg-[#fbf8f5] relative">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={selectedScreen}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.25, ease: "easeInOut" }}
-                      className="w-full h-full relative"
-                    >
-                      <Image
-                        src={showcaseScreens[selectedScreen].image}
-                        alt={showcaseScreens[selectedScreen].title}
-                        fill
-                        className="object-cover"
-                        priority
-                      />
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </div>
+              <IPhoneFrame>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={selectedScreen}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
+                    className="w-full h-full relative"
+                  >
+                    <Image
+                      src={showcaseScreens[selectedScreen].image}
+                      alt={showcaseScreens[selectedScreen].title}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </IPhoneFrame>
             </div>
           </div>
         </div>
