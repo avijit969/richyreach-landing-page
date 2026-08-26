@@ -78,6 +78,7 @@ export default function RefundPage() {
           <div className="flex gap-4">
             <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            <Link href="/child-safety" className="hover:text-white transition-colors">Child Safety</Link>
           </div>
         </div>
       </footer>
