@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
@@ -11,7 +12,7 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "RichyReach — Influencer Marketing Platform",
-  description: "The premier portal where creators get Rich and brands get Reach. Seamless campaigns, verified engagement, smart AI matching, and instant secure payments.",
+  description: "Connect creators and brands for influencer marketing collaborations, seamless campaigns, verified engagement, smart AI matching, and secure payments.",
   icons: {
     icon: "/richyreach-logo.png",
   },
@@ -37,6 +38,11 @@ export default function RootLayout({
             {children}
           </div>
         </SmoothScroll>
+
+        <Script
+          src="https://bot.magicwebs.ai/widget/apre1bj25dp76cw9rb93drzicvro/embed.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
