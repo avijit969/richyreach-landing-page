@@ -1,24 +1,25 @@
 import Link from "next/link";
-import { Logo, PLAY_STORE_URL } from "./ui";
+import { PLAY_STORE_URL } from "./links";
+import { Logo } from "./ui";
 
 const COLUMNS = [
   {
     title: "Product",
     links: [
-      { href: "#features", label: "Features" },
-      { href: "#arena", label: "Arena" },
-      { href: "#how", label: "How it works" },
-      { href: "#faq", label: "FAQ" },
+      { href: "/#features", label: "Features" },
+      { href: "/#arena", label: "Arena" },
+      { href: "/#how", label: "How it works" },
+      { href: "/#faq", label: "FAQ" },
       { href: PLAY_STORE_URL, label: "Google Play" },
     ],
   },
   {
     title: "For",
     links: [
-      { href: "#who", label: "Creators" },
-      { href: "#who", label: "Brands" },
-      { href: "#who", label: "Local businesses" },
-      { href: "#features", label: "Instagram sellers" },
+      { href: "/#who", label: "Creators" },
+      { href: "/#who", label: "Brands" },
+      { href: "/#who", label: "Local businesses" },
+      { href: "/#features", label: "Instagram sellers" },
     ],
   },
   {

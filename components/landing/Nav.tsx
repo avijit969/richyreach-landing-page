@@ -2,15 +2,16 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Logo, PLAY_STORE_URL, PlayStoreButton } from "./ui";
 
 const LINKS = [
-  { href: "#features", label: "Features" },
-  { href: "#arena", label: "Arena" },
-  { href: "#who", label: "Who it's for" },
-  { href: "#how", label: "How it works" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#features", label: "Features" },
+  { href: "/#arena", label: "Arena" },
+  { href: "/#who", label: "Who it's for" },
+  { href: "/#how", label: "How it works" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export default function Nav() {
@@ -31,9 +32,9 @@ export default function Nav() {
       }`}
     >
       <nav className="max-w-[1272px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <a href="#top" aria-label="RichyReach home">
+        <Link href="/" aria-label="RichyReach home">
           <Logo />
-        </a>
+        </Link>
 
         <div className="hidden lg:flex items-center gap-8 text-[15px] text-ink/80">
           {LINKS.map((l) => (

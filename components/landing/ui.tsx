@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { PLAY_STORE_URL } from "./links";
 
 /** Fades a block up into place the first time it scrolls into view. */
 export function Reveal({
@@ -79,7 +80,7 @@ export function InstagramIcon({ size = 24, className }: { size?: number; classNa
   );
 }
 
-export const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.richyreach.app";
+export { PLAY_STORE_URL };
 
 /** Opens the Android app's Play Store listing in a new tab. */
 export function PlayStoreButton({ size = "md", label = "Get it on Google Play" }: { size?: "md" | "lg"; label?: string }) {
