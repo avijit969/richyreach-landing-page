@@ -9,7 +9,7 @@ const LEADERBOARD = [
 
 export default function Arena() {
   return (
-    <section id="arena" className="py-24 md:py-32 scroll-mt-16">
+    <section id="arena" className="py-20 md:py-32 scroll-mt-16">
       <div className="max-w-[1272px] mx-auto px-4 sm:px-6">
         <Reveal className="grid lg:grid-cols-2 gap-6 items-end">
           <div>
@@ -27,12 +27,12 @@ export default function Arena() {
 
         <div className="mt-14 grid md:grid-cols-2 gap-5">
           <Reveal className="min-w-0 rounded-3xl border border-line p-3">
-            <div className="px-4 pt-4 pb-6">
+            <div className="px-3 sm:px-4 pt-4 pb-6">
               <h3 className="text-[18px] font-medium">Reel Reach Arena</h3>
               <p className="mt-2 text-[15px] text-muted">Creators post reels for your brand. The highest reach wins the prize pool.</p>
             </div>
-            <div className="rounded-2xl bg-sand p-4 sm:p-6">
-              <div className="rounded-2xl border border-line bg-white p-5">
+            <div className="rounded-2xl bg-sand p-2.5 sm:p-6">
+              <div className="rounded-2xl border border-line bg-white p-4 sm:p-5">
                 <div className="flex items-center justify-between">
                   <p className="flex items-center gap-2 text-[14px] font-medium">
                     <Trophy size={16} /> Leaderboard
@@ -41,9 +41,9 @@ export default function Arena() {
                 </div>
                 <div className="mt-4 divide-y divide-line">
                   {LEADERBOARD.map((row, i) => (
-                    <div key={row.name} className="flex items-center gap-3 py-3">
-                      <span className="w-5 text-[13px] text-muted">{i + 1}</span>
-                      <span className={`shrink-0 w-8 h-8 rounded-full ${["bg-rose-soft/70", "bg-cream", "bg-cream-dark"][i]}`} />
+                    <div key={row.name} className="flex items-center gap-2.5 sm:gap-3 py-3">
+                      <span className="w-4 shrink-0 text-[13px] text-muted">{i + 1}</span>
+                      <span className={`hidden min-[400px]:block shrink-0 w-8 h-8 rounded-full ${["bg-rose-soft/70", "bg-cream", "bg-cream-dark"][i]}`} />
                       <span className="flex-1 min-w-0 truncate text-[14px]">{row.name}</span>
                       <span className="text-[13px] text-muted w-12 shrink-0 text-right">{row.reach}</span>
                       <span className="text-[13px] font-medium w-14 shrink-0 text-right">{row.prize}</span>
@@ -55,12 +55,12 @@ export default function Arena() {
           </Reveal>
 
           <Reveal delay={0.1} className="min-w-0 rounded-3xl border border-line p-3">
-            <div className="px-4 pt-4 pb-6">
+            <div className="px-3 sm:px-4 pt-4 pb-6">
               <h3 className="text-[18px] font-medium">Google Review Arena</h3>
               <p className="mt-2 text-[15px] text-muted">Creators visit and leave genuine Google reviews. Each approved review earns them ₹25.</p>
             </div>
-            <div className="rounded-2xl bg-sand p-4 sm:p-6">
-              <div className="rounded-2xl border border-line bg-white p-5">
+            <div className="rounded-2xl bg-sand p-2.5 sm:p-6">
+              <div className="rounded-2xl border border-line bg-white p-4 sm:p-5">
                 <div className="flex items-center gap-3">
                   <span className="w-8 h-8 rounded-full bg-cream" />
                   <div>

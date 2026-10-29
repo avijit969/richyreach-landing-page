@@ -9,7 +9,7 @@ const JOBS = [
 
 export default function Problem() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-20 md:py-32">
       <div className="max-w-[1272px] mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-14 lg:gap-24">
         <Reveal>
           <Eyebrow>The problem</Eyebrow>
@@ -52,13 +52,15 @@ export default function Problem() {
             </div>
           ))}
 
-          <div className="mt-6 rounded-3xl bg-sand p-6 sm:p-7 flex items-start gap-5">
+          <div className="mt-6 rounded-3xl bg-sand p-5 sm:p-7 flex items-start gap-4 sm:gap-5">
             <Heart size={20} className="mt-0.5 shrink-0" />
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <h3 className="text-[17px] font-medium">The content you&apos;re great at</h3>
               <p className="mt-1 text-[15px] text-muted">The reason you started posting</p>
+              {/* On phones the pill drops under the text instead of squeezing it. */}
+              <span className="sm:hidden inline-block mt-3 rounded-full bg-ink px-3 py-1 text-[13px] font-medium text-white">Yours again</span>
             </div>
-            <span className="shrink-0 rounded-full bg-ink px-3 py-1 text-[13px] font-medium text-white">Yours again</span>
+            <span className="hidden sm:inline-block shrink-0 rounded-full bg-ink px-3 py-1 text-[13px] font-medium text-white">Yours again</span>
           </div>
         </Reveal>
       </div>

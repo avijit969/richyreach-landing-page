@@ -49,7 +49,7 @@ export default function Footer() {
           <p className="mt-4 max-w-[260px] text-[14px] leading-relaxed text-muted">Where creators get rich and brands get reach.</p>
         </div>
         {COLUMNS.map((col) => (
-          <div key={col.title}>
+          <div key={col.title} className={col.title === "Company" ? "col-span-2 sm:col-span-1" : undefined}>
             <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-muted">{col.title}</p>
             <ul className="mt-5 space-y-3.5">
               {col.links.map((l) => (
@@ -59,7 +59,7 @@ export default function Footer() {
                       {l.label}
                     </Link>
                   ) : (
-                    <a href={l.href} className="text-[15px] hover:text-oxblood transition-colors break-all">
+                    <a href={l.href} className="text-[15px] hover:text-oxblood transition-colors break-words">
                       {l.label}
                     </a>
                   )}

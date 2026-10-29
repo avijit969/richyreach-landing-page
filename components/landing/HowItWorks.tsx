@@ -3,7 +3,7 @@ import { Reveal } from "./ui";
 
 function Card({ title, body, children, delay }: { title: string; body: string; children: React.ReactNode; delay: number }) {
   return (
-    <Reveal delay={delay} className="rounded-3xl border border-line p-3 flex flex-col">
+    <Reveal delay={delay} className="rounded-3xl border border-line p-3 flex flex-col sm:last:col-span-2 lg:last:col-span-1">
       <div className="px-4 pt-4 pb-6">
         <h3 className="text-[17px] font-medium">{title}</h3>
         <p className="mt-2 text-[15px] leading-relaxed text-muted">{body}</p>
@@ -17,7 +17,7 @@ function Card({ title, body, children, delay }: { title: string; body: string; c
 
 export default function HowItWorks() {
   return (
-    <section id="how" className="py-24 md:py-32 scroll-mt-16">
+    <section id="how" className="py-20 md:py-32 scroll-mt-16">
       <div className="max-w-[1272px] mx-auto px-4 sm:px-6">
         <Reveal>
           <h2 className="text-[32px] md:text-[34px] leading-[1.18] tracking-[-0.02em]">
@@ -27,7 +27,7 @@ export default function HowItWorks() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid md:grid-cols-3 gap-4">
+        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <Card
             delay={0}
             title="The brand sends a brief"

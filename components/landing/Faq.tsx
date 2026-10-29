@@ -10,7 +10,7 @@ export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-24 md:py-32 scroll-mt-16">
+    <section id="faq" className="py-20 md:py-32 scroll-mt-16">
       <div className="max-w-[1272px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-12 lg:gap-16">
         <Reveal>
           <h2 className="text-[32px] md:text-[34px] leading-[1.18] tracking-[-0.02em]">

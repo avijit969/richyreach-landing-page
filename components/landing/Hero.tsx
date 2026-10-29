@@ -183,10 +183,10 @@ export default function Hero({ onJoin }: { onJoin: () => void }) {
         className="relative max-w-[1272px] mx-auto px-4 sm:px-6"
       >
         <div className="relative rounded-[28px] border border-line bg-sand overflow-hidden h-[460px] sm:h-[560px] md:h-[620px]">
-          <div className="absolute inset-0 flex items-start justify-center gap-4 md:gap-10 pt-12 md:pt-16">
-            <Phone src="/richyreach-app-ui/creator-marketplace.png" alt="RichyReach marketplace screen" className="hidden sm:block w-[220px] md:w-[260px] mt-16 -rotate-3" />
-            <Phone src="/richyreach-app-ui/creator-home.png" alt="RichyReach creator home screen" className="w-[230px] sm:w-[250px] md:w-[290px]" priority />
-            <Phone src="/richyreach-app-ui/creator-arena.png" alt="RichyReach arena screen" className="hidden sm:block w-[220px] md:w-[260px] mt-16 rotate-3" />
+          <div className="absolute inset-0 flex items-start justify-center gap-3 md:gap-5 lg:gap-10 pt-10 md:pt-14">
+            <Phone src="/richyreach-app-ui/creator-marketplace.png" alt="RichyReach marketplace screen" className="hidden sm:block w-[170px] md:w-[200px] lg:w-[260px] mt-16 -rotate-3" />
+            <Phone src="/richyreach-app-ui/creator-home.png" alt="RichyReach creator home screen" className="w-[230px] sm:w-[210px] md:w-[240px] lg:w-[290px]" priority />
+            <Phone src="/richyreach-app-ui/creator-arena.png" alt="RichyReach arena screen" className="hidden sm:block w-[170px] md:w-[200px] lg:w-[260px] mt-16 rotate-3" />
           </div>
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-sand to-transparent" />
         </div>

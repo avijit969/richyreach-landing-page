@@ -203,7 +203,7 @@ export default function FeatureTabs() {
   const tab = TABS.find((t) => t.id === active) ?? TABS[0];
 
   return (
-    <section id="features" className="py-24 md:py-32 scroll-mt-16">
+    <section id="features" className="py-20 md:py-32 scroll-mt-16">
       <div className="max-w-[1272px] mx-auto px-4 sm:px-6">
         <Reveal className="text-center max-w-[620px] mx-auto">
           <h2 className="text-[32px] md:text-[34px] leading-[1.18] tracking-[-0.02em]">Built for how collabs actually run</h2>
@@ -221,7 +221,11 @@ export default function FeatureTabs() {
                 return (
                   <button
                     key={t.id}
-                    onClick={() => setActive(t.id)}
+                    onClick={(e) => {
+                      setActive(t.id);
+                      // Keep the chosen tab visible when the bar scrolls sideways on phones.
+                      e.currentTarget.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+                    }}
                     className={`flex items-center gap-2 rounded-full px-4 py-2 text-[14px] whitespace-nowrap transition-colors cursor-pointer ${
                       on ? "bg-sand text-ink" : "text-muted hover:text-ink"
                     }`}

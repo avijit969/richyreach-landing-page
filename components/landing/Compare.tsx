@@ -11,7 +11,7 @@ const ROWS = [
 
 export default function Compare() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-20 md:py-32">
       <div className="max-w-[1272px] mx-auto px-4 sm:px-6 grid lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] gap-12 lg:gap-20 items-center">
         <Reveal>
           <Eyebrow>Why RichyReach</Eyebrow>
@@ -24,8 +24,31 @@ export default function Compare() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.1} className="rounded-3xl border border-line overflow-hidden">
-          <div className="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] text-[13px] sm:text-[14px]">
+        {/* Phones: one card per row instead of three cramped columns. */}
+        <Reveal delay={0.1} className="sm:hidden rounded-3xl border border-line divide-y divide-line">
+          {ROWS.map((r) => (
+            <div key={r.label} className="px-5 py-5">
+              <p className="text-[15px] font-medium">{r.label}</p>
+              <p className="mt-3 flex gap-2.5 text-[15px]">
+                <CircleCheck size={17} className="mt-0.5 shrink-0" />
+                <span>
+                  <span className="sr-only">RichyReach: </span>
+                  {r.us}
+                </span>
+              </p>
+              <p className="mt-2 flex gap-2.5 text-[15px] text-muted">
+                <CircleX size={17} className="mt-0.5 shrink-0 text-faint" />
+                <span>
+                  <span className="sr-only">DMs and spreadsheets: </span>
+                  {r.them}
+                </span>
+              </p>
+            </div>
+          ))}
+        </Reveal>
+
+        <Reveal delay={0.1} className="hidden sm:block rounded-3xl border border-line overflow-hidden">
+          <div className="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)_minmax(0,1fr)] text-[14px]">
             <div className="px-4 sm:px-5 py-4 border-b border-line" />
             <div className="px-3 sm:px-5 py-4 border-b border-line font-medium">RichyReach</div>
             <div className="px-3 sm:px-5 py-4 border-b border-line text-muted">DMs and spreadsheets</div>

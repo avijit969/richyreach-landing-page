@@ -8,7 +8,7 @@ export default function Cta({ onJoin }: { onJoin: () => void }) {
         <Reveal className="relative rounded-[28px] bg-sand overflow-hidden">
           <div className="text-center pt-14 px-6">
             <h2 className="text-[32px] md:text-[34px] leading-[1.18] tracking-[-0.02em]">Your next collab is one tap away</h2>
-            <p className="mt-4 text-[17px] text-muted">Join early access and be first in when your city opens.</p>
+            <p className="mt-4 text-[17px] text-muted">Download RichyReach on Android today. iOS is on its way.</p>
           </div>
 
           {/* Phones run off the bottom edge of the panel on purpose. */}

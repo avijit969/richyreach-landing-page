@@ -30,7 +30,7 @@ const ITEMS: { icon: IconType; title: string; body: string }[] = [
 
 export default function AllInOne() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-20 md:py-32">
       <div className="max-w-[1272px] mx-auto px-4 sm:px-6">
         <Reveal className="max-w-[560px]">
           <h2 className="text-[32px] md:text-[34px] leading-[1.18] tracking-[-0.02em]">And it&apos;s all one app</h2>
