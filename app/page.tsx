@@ -1,61 +1,72 @@
-"use client";
+import HomePage from "@/components/landing/HomePage";
+import { FAQS } from "@/components/landing/faq-data";
+import {
+  ANDROID_PACKAGE,
+  COMPANY_NAME,
+  PLAY_STORE_URL,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  SUPPORT_EMAIL,
+} from "@/lib/site";
 
-import { useEffect, useState } from "react";
-import WaitlistModal from "@/components/WaitlistModal";
-import Nav from "@/components/landing/Nav";
-import Hero from "@/components/landing/Hero";
-import Problem from "@/components/landing/Problem";
-import FeatureTabs from "@/components/landing/FeatureTabs";
-import Arena from "@/components/landing/Arena";
-import Audiences from "@/components/landing/Audiences";
-import HowItWorks from "@/components/landing/HowItWorks";
-import AllInOne from "@/components/landing/AllInOne";
-import Compare from "@/components/landing/Compare";
-import Cta from "@/components/landing/Cta";
-import Faq from "@/components/landing/Faq";
-import Footer from "@/components/landing/Footer";
+/** Structured data for search engines: who runs the site, what the app is, and the FAQ. */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      legalName: COMPANY_NAME,
+      url: SITE_URL,
+      logo: `${SITE_URL}/richyreach-logo.png`,
+      email: SUPPORT_EMAIL,
+      contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: SUPPORT_EMAIL, areaServed: "IN" },
+      sameAs: [PLAY_STORE_URL],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      description: SITE_DESCRIPTION,
+      inLanguage: "en-IN",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": `${SITE_URL}/#app`,
+      name: SITE_NAME,
+      description: SITE_DESCRIPTION,
+      operatingSystem: "ANDROID",
+      applicationCategory: "BusinessApplication",
+      installUrl: PLAY_STORE_URL,
+      downloadUrl: PLAY_STORE_URL,
+      identifier: ANDROID_PACKAGE,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}/#faq`,
+      mainEntity: FAQS.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
 
-export default function Home() {
-  const [waitlistOpen, setWaitlistOpen] = useState(false);
-
-  // Shared links like ?waitlist=open or #join open the signup straight away.
-  useEffect(() => {
-    const check = () => {
-      const params = new URLSearchParams(window.location.search);
-      if (
-        params.get("waitlist") === "open" ||
-        params.get("join") === "true" ||
-        window.location.hash === "#join" ||
-        window.location.hash === "#waitlist"
-      ) {
-        setWaitlistOpen(true);
-      }
-    };
-    check();
-    window.addEventListener("hashchange", check);
-    return () => window.removeEventListener("hashchange", check);
-  }, []);
-
-  // Android is live on Google Play; the waitlist is now only for the iOS app.
-  const openIosWaitlist = () => setWaitlistOpen(true);
-
+export default function Page() {
   return (
-    <div className="flex-1 flex flex-col">
-      <Nav />
-      <main>
-        <Hero onJoin={openIosWaitlist} />
-        <Problem />
-        <FeatureTabs />
-        <Arena />
-        <Audiences />
-        <HowItWorks />
-        <AllInOne />
-        <Compare />
-        <Cta onJoin={openIosWaitlist} />
-        <Faq />
-      </main>
-      <Footer />
-      <WaitlistModal isOpen={waitlistOpen} onClose={() => setWaitlistOpen(false)} />
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        // Escape "<" so no string in the payload can close the script tag.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
+      <HomePage />
+    </>
   );
 }
