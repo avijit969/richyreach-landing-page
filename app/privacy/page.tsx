@@ -45,7 +45,7 @@ export default function PrivacyPage() {
       <section>
         <h2>5. User Control & Data Deletion</h2>
         <p>
-          Users can edit their profiles or unlink social accounts at any time. To completely delete your RichyReach account and wipe your transaction/metric records, contact our privacy team at support@richyreach.com.
+          Users can edit their profiles or unlink social accounts at any time. To permanently delete your RichyReach account and its associated data, open the app and go to Profile → Delete account, or email support@richyreach.com.
         </p>
       </section>
     </LegalPage>
