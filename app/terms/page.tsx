@@ -52,6 +52,13 @@ export default function TermsPage() {
           RichyReach is a marketplace coordinator. We are not liable for dispute outcomes between brands and creators, content quality issues, or campaign performance metrics. Use of the platform is at your own discretion.
         </p>
       </section>
+
+      <section>
+        <h2>7. Prohibited Content</h2>
+        <p>
+          RichyReach has zero tolerance for objectionable content or abusive users. You may not post or send content that is hateful, harassing, sexually explicit, violent, fraudulent, spam or otherwise illegal. You can report any user or conversation and block any user from within the app. We review reports within 24 hours and remove offending content and suspend or delete the accounts responsible.
+        </p>
+      </section>
     </LegalPage>
   );
 }
