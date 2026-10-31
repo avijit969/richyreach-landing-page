@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Logo, PLAY_STORE_URL, PlayStoreButton } from "./ui";
+import { GooglePlayIcon, Logo, PLAY_STORE_URL, PlayStoreButton, WEB_APP_URL } from "./ui";
 
 const LINKS = [
   { href: "/#features", label: "Features" },
@@ -48,6 +48,9 @@ export default function Nav() {
           <a href="mailto:support@richyreach.com" className="text-[15px] text-ink/80 hover:text-ink">
             Contact
           </a>
+          <a href={WEB_APP_URL} className="text-[15px] text-ink/80 hover:text-ink">
+            Web app
+          </a>
           <PlayStoreButton label="Get the app" />
         </div>
 
@@ -75,9 +78,17 @@ export default function Nav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
-                className="mt-4 rounded-full bg-ink text-white text-center font-medium py-3"
+                className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink text-white font-medium py-3"
               >
+                <GooglePlayIcon size={16} />
                 Get it on Google Play
+              </a>
+              <a
+                href={WEB_APP_URL}
+                onClick={() => setOpen(false)}
+                className="mt-3 rounded-full border border-line text-ink text-center font-medium py-3"
+              >
+                Open the web app
               </a>
             </div>
           </motion.div>

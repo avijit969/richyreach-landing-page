@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PLAY_STORE_URL } from "./links";
+import { PLAY_STORE_URL, WEB_APP_URL } from "./links";
 import { Logo } from "./ui";
 
 const COLUMNS = [
@@ -11,6 +11,7 @@ const COLUMNS = [
       { href: "/#how", label: "How it works" },
       { href: "/#faq", label: "FAQ" },
       { href: PLAY_STORE_URL, label: "Google Play" },
+      { href: WEB_APP_URL, label: "Web app" },
     ],
   },
   {

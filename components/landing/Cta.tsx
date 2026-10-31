@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Phone, PlayStoreButton, Reveal } from "./ui";
+import { AppleIcon, Phone, PlayStoreButton, Reveal, WEB_APP_URL } from "./ui";
 
 export default function Cta({ onJoin }: { onJoin: () => void }) {
   return (
@@ -22,10 +22,17 @@ export default function Cta({ onJoin }: { onJoin: () => void }) {
               <Image src="/richyreach-logo.png" alt="" fill sizes="36px" className="object-cover" />
             </span>
             <p className="mt-4 text-[16px] font-medium">Available on Android</p>
-            <p className="mt-1 text-[14px] text-muted">iOS is coming soon. For creators, brands and local businesses.</p>
+            <p className="mt-1 text-[14px] text-muted">
+              Or use it on the{" "}
+              <a href={WEB_APP_URL} className="text-ink underline underline-offset-2 hover:text-oxblood">
+                web
+              </a>
+              . iOS is coming soon. For creators, brands and local businesses.
+            </p>
             <div className="mt-5 flex items-center gap-4">
               <PlayStoreButton label="Google Play" />
-              <button onClick={onJoin} className="text-[14px] hover:text-oxblood cursor-pointer">
+              <button onClick={onJoin} className="inline-flex items-center gap-1.5 text-[14px] hover:text-oxblood cursor-pointer">
+                <AppleIcon size={15} />
                 iOS waitlist
               </button>
             </div>

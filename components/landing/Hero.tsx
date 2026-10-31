@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Smartphone, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { useEffect, useRef } from "react";
-import { Phone, PlayStoreButton, secondaryButton } from "./ui";
+import { AppleIcon, Phone, PlayStoreButton, secondaryButton, WEB_APP_URL } from "./ui";
 
 const CX = 700;
 const CY = 700;
@@ -161,7 +161,7 @@ export default function Hero({ onJoin }: { onJoin: () => void }) {
           <div className="mt-10 flex flex-col sm:flex-row items-center gap-3">
             <PlayStoreButton size="lg" />
             <button onClick={onJoin} className={secondaryButton}>
-              <Smartphone size={17} />
+              <AppleIcon size={17} />
               Join the iOS waitlist
             </button>
           </div>
@@ -169,7 +169,11 @@ export default function Hero({ onJoin }: { onJoin: () => void }) {
           <span className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1 text-[13px] text-muted">
             <span className="w-1.5 h-1.5 rounded-full bg-green" />
             <span>
-              Live on <span className="text-ink">Android</span> · <span className="text-ink">iOS</span> coming soon
+              Live on <span className="text-ink">Android</span> and the{" "}
+              <a href={WEB_APP_URL} className="text-ink underline underline-offset-2 hover:text-oxblood">
+                web
+              </a>{" "}
+              · <span className="text-ink">iOS</span> coming soon
             </span>
           </span>
         </motion.div>

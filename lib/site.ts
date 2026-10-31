@@ -29,6 +29,8 @@ export const ANDROID_PACKAGE = "com.richyreach.app";
 
 export const PLAY_STORE_URL = `https://play.google.com/store/apps/details?id=${ANDROID_PACKAGE}`;
 
+export const WEB_APP_URL = "https://app.richyreach.com";
+
 export const SUPPORT_EMAIL = "support@richyreach.com";
 
 export const COMPANY_NAME = "MagicWebs Technologies Pvt Ltd";

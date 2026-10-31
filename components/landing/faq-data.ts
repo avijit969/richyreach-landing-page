@@ -26,7 +26,7 @@ export const FAQS = [
   },
   {
     q: "When can I download the app?",
-    a: "RichyReach is live on Android: download it from Google Play. The iOS app is on its way; join the iOS waitlist and we'll email you as soon as it's on the App Store.",
+    a: "RichyReach is live on Android: download it from Google Play. You can also use it in your browser at app.richyreach.com. The iOS app is on its way; join the iOS waitlist and we'll email you as soon as it's on the App Store.",
   },
   {
     q: "Who is behind RichyReach?",
